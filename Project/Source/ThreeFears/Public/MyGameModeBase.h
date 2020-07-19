@@ -6,14 +6,10 @@
 #include "GameFramework/GameModeBase.h"
 #include "MyGameModeBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class THREEFEARS_API AMyGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-
 
 public:
 	AMyGameModeBase();

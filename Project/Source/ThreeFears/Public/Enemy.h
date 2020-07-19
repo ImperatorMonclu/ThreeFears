@@ -6,21 +6,22 @@
 #include "Entity.h"
 #include "Enemy.generated.h"
 
+//Entity que actuará de enemigo frente al jugador
 UCLASS()
 class THREEFEARS_API AEnemy : public AEntity
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
+	//Constructor
 	AEnemy();
 
+	//Devuelve el árbol de comportamiento por defecto
+	class UBehaviorTree* GetBehaviorTree();
+
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+	//Árbol por defecto
+	UPROPERTY(EditAnywhere) //Para poder editar su valor en Blueprints
+		class UBehaviorTree* BehaviorTree;
 };

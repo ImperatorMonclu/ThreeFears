@@ -6,9 +6,6 @@
 #include "Engine/GameInstance.h"
 #include "MyGameInstance.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class THREEFEARS_API UMyGameInstance : public UGameInstance
 {

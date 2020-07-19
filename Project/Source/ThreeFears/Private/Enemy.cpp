@@ -1,27 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Enemy.h"
 
-// Sets default values
+//Constructor
 AEnemy::AEnemy()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
+	//Inicializa variables
+	Life = 200.0f;
+	MaxLife = 200.0f;
+	BehaviorTree = nullptr;
 }
 
-// Called when the game starts or when spawned
-void AEnemy::BeginPlay()
+//Devuelve el árbol de comportamiento por defecto
+UBehaviorTree* AEnemy::GetBehaviorTree()
 {
-	Super::BeginPlay();
-	
+	return BehaviorTree;
 }
-
-// Called every frame
-void AEnemy::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-

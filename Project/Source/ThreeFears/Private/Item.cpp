@@ -1,27 +1,33 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Item.h"
+#include "Components/SphereComponent.h"
 
-// Sets default values
 AItem::AItem()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
+
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	Mesh->SetCanEverAffectNavigation(false);
+	RootComponent = Mesh;
+
+	Interactive = CreateDefaultSubobject<USphereComponent>(TEXT("Interactive"));
+	Interactive->SetupAttachment(RootComponent);
+	Interactive->BodyInstance.SetCollisionProfileName("OverlapOnlyPawn");
 
 }
 
-// Called when the game starts or when spawned
-void AItem::BeginPlay()
+void AItem::StartFocusItem()
 {
-	Super::BeginPlay();
-	
+	Interactive->SetRenderCustomDepth(true);
 }
 
-// Called every frame
-void AItem::Tick(float DeltaTime)
+void AItem::EndFocusItem()
 {
-	Super::Tick(DeltaTime);
-
+	Interactive->SetRenderCustomDepth(false);
 }
 
+UStaticMeshComponent* AItem::GetStaticMeshComponent()
+{
+	return Mesh;
+}

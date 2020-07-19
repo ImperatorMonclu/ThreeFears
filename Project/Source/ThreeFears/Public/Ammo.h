@@ -3,24 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "Item.h"
 #include "Ammo.generated.h"
 
+//Item para almacenar balas y poder recogerlas
 UCLASS()
-class THREEFEARS_API AAmmo : public AActor
+class THREEFEARS_API AAmmo : public AItem
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AAmmo();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+public:
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	//Devuelve las balas que contiene este item
+	int32 GetBullets();
 
+	//Balas del item
+	UPROPERTY(EditInstanceOnly) //Para variar su valor según la instancia en el nivel
+		int32 Bullets;
 };

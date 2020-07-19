@@ -6,9 +6,6 @@
 #include "Item.h"
 #include "NoteObject.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class THREEFEARS_API ANoteObject : public AItem
 {

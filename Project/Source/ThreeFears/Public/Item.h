@@ -4,23 +4,29 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Activatable.h"
 #include "Item.generated.h"
 
 UCLASS()
-class THREEFEARS_API AItem : public AActor
+class THREEFEARS_API AItem : public AActor, public IActivatable
 {
 	GENERATED_BODY()
 	
-public:	
-	// Sets default values for this actor's properties
+public:
 	AItem();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	virtual void StartFocusItem();
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	virtual void EndFocusItem();
+
+	class UStaticMeshComponent* GetStaticMeshComponent();
+
+protected:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interactive, meta = (AllowPrivateAccess = "true"))
+		class USphereComponent* Interactive;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh, meta = (AllowPrivateAccess = "true"))
+		class UStaticMeshComponent* Mesh;
 
 };
